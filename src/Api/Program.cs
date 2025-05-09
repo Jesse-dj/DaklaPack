@@ -36,3 +36,5 @@ app.UseStatusCodePages();
 app.MapFileEndpoints();
 
 await app.RunAsync();
+
+public partial class Program { }
