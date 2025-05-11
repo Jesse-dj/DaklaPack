@@ -1,6 +1,7 @@
-﻿using Ardalis.Result;
+﻿using Api.Application.Services;
+using Ardalis.Result;
 
-namespace Api.Application.Services;
+namespace Api.Application.Abstractions;
 
 internal interface IFileService
 {

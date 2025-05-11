@@ -1,4 +1,5 @@
-﻿using Api.Settings;
+﻿using Api.Application.Abstractions;
+using Api.Settings;
 using Ardalis.Result;
 using Microsoft.Extensions.Options;
 

@@ -1,5 +1,5 @@
 ﻿using System.Net.Mime;
-using Api.Application.Services;
+using Api.Application.Abstractions;
 using Api.Settings;
 using Ardalis.Result;
 using Microsoft.AspNetCore.Mvc;

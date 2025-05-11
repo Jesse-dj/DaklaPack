@@ -1,4 +1,5 @@
-﻿using Api.Application.Services;
+﻿using Api.Application.Abstractions;
+using Api.Application.Services;
 using Api.Settings;
 using FluentAssertions;
 using Microsoft.Extensions.Options;

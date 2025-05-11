@@ -1,4 +1,4 @@
-﻿namespace Api.Application.Services;
+﻿namespace Api.Application.Abstractions;
 
 public interface IFileMutationService
 {

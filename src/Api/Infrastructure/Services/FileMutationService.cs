@@ -1,6 +1,7 @@
 ﻿using System.Text;
+using Api.Application.Abstractions;
 
-namespace Api.Application.Services;
+namespace Api.Infrastructure.Services;
 
 public sealed class FileMutationService(TimeProvider timeProvider) : IFileMutationService
 {
