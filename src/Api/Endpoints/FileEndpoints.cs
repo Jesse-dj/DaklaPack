@@ -1,4 +1,5 @@
-﻿using Api.Application.Services;
+﻿using System.Net.Mime;
+using Api.Application.Services;
 using Api.Settings;
 using Ardalis.Result;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ public static class FileEndpoints
 {
     public static void MapFileEndpoints(this IEndpointRouteBuilder routes)
     {
-        routes.MapPost("/file/upload", async (IFormFile file, IFileService fileService, IOptions<FileUploadSettings> options, CancellationToken cancellationToken) =>
+        routes.MapPost("/file/upload", async ([FromForm] IFormFile file, IFileService fileService, IOptions<FileUploadSettings> options, CancellationToken cancellationToken) =>
         {
             var result = await fileService.UploadFileAsync(file.OpenReadStream(), file.FileName, cancellationToken);
 
@@ -25,9 +26,9 @@ public static class FileEndpoints
                 return Results.Problem(problem);
             }
 
-            return Results.File(result.Value!.File, "text/plain", result.Value.FileName);
+            return Results.File(result.Value!.File, MediaTypeNames.Text.Plain, result.Value.FileName);
         })
-        .Produces(StatusCodes.Status200OK, contentType: "text/plain")
+        .Produces(StatusCodes.Status200OK, contentType: MediaTypeNames.Text.Plain, responseType: typeof(Stream))
         .Produces(StatusCodes.Status400BadRequest, responseType: typeof(ProblemDetails))
         .WithName("MutateFile")
         .WithOpenApi(op =>

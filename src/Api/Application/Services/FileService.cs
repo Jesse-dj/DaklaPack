@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Api.Application.Services;
 
-public sealed partial class FileService(
+public sealed class FileService(
     IFileMutationService mutationService,
     IOptions<FileUploadSettings> options) : IFileService
 {
@@ -27,6 +27,6 @@ public sealed partial class FileService(
 
         var mutatedFile = await _mutationService.MutateFileAsync(file, cancellationToken);
 
-        return Result.Success<MutatedFileResult?>(new MutatedFileResult(mutatedFile, Path.GetRandomFileName()));
+        return Result.Success<MutatedFileResult?>(new MutatedFileResult(mutatedFile, $"{Path.GetRandomFileName()}.txt"));
     }
 }
